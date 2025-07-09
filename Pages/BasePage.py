@@ -6,7 +6,14 @@ class BasePage:
         self.wait = WebDriverWait(self.driver, 10)
 
     def find_element(self,locator):
-        return self.wait.until(EC.presence_of_element_located(locator))
+        try:
+
+            return self.wait.until(EC.presence_of_element_located(locator))
+        except:
+            raise Exception(f"Element {locator} not found")
+
+    def find_elements(self,locator):
+        return self.wait.until(EC.presence_of_all_elements_located(locator))
 
     def click_element(self,locator):
         self.wait.until(EC.element_to_be_clickable(locator)).click()
@@ -17,10 +24,13 @@ class BasePage:
         element.send_keys(text)
 
     def get_text_from_element(self,locator):
-        return self.wait.until(EC.presence_of_element_located(locator)).text
+        try:
+            return self.wait.until(EC.presence_of_element_located(locator)).text
+        except:
+            return 0
 
     def get_count(self,locator):
-        return len(self.wait.until(EC.presence_of_all_elements_located(locator)))
+        return len(self.find_elements(locator))
 
     def is_displayed(self,locator):
         try:
@@ -29,4 +39,7 @@ class BasePage:
             return False
 
     def find_element_by_class_name(self,class_name):
-        return self.wait.until(EC.find_all_elements(class_name))
+        return self.driver.find_elements(class_name)
+
+    def get_current_url(self):
+        return self.driver.current_url

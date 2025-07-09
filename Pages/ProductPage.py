@@ -12,6 +12,7 @@ class ProductPage(BasePage):
     def get_item_count(self):
         return self.get_count(ProductPageLocators.inventory_count_path)
 
+
     def add_single_item(self,locators):
         self.click_element(locators)
     def remove_single_item(self,locators):
@@ -36,7 +37,8 @@ class ProductPage(BasePage):
         self.click_element(ProductPageLocators.cart_button_path)
 
     def get_cart_count(self):
-        return self.get_count(ProductPageLocators.cart_count_path)
+        return int(self.get_text_from_element(ProductPageLocators.cart_count_path))
+        #return self.get_count(ProductPageLocators.cart_count_path)
 
     def select_filter_button(self,visible_text):
         dropdown=self.find_element(ProductPageLocators.select_filter_path)
@@ -44,7 +46,31 @@ class ProductPage(BasePage):
         select.select_by_visible_text(visible_text)
 
     def get_all_items_names(self):
-        elements=self.find_elemets
+        elements=self.find_elements(ProductPageLocators.all_item_name_class_path)
+        items_list=[]
+        for element in elements:
+            items_list.append(element.text)
+        return items_list
+
+    def get_all_items_price(self):
+        elements=self.find_elements(ProductPageLocators.all_item_price_class_path)
+        prices_list=[]
+        for element in elements:
+            price_text = element.text.replace("$", "")
+            prices_list.append(float(price_text))
+        return prices_list
+
+    def is_sorted_des(self,list1) :
+        sorted_copy=list1
+        sorted_copy.sort(reverse=True)
+        return list1==sorted_copy
+
+    def is_sorted_asc(self,list2) :
+        sorted_copy = list2
+        sorted_copy.sort()
+        return list2 == sorted_copy
+
+
 
 
 

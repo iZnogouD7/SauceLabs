@@ -47,6 +47,7 @@ class ProductPageLocators:
     add_Tshirt_path = (By.ID,'add-to-cart-sauce-labs-bolt-t-shirt')
     add_Jacket_path = (By.ID,'add-to-cart-sauce-labs-fleece-jacket')
     add_onesie_path=(By.ID,'add-to-cart-sauce-labs-onesie')
+    #add_allthings_path=(By.XPATH,'//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
     add_allthings_path=(By.ID,'add-to-cart-test.allthethings()-t-shirt-(red)')
 
     remove_back_pack_path=(By.ID,'remove-sauce-labs-backpack')
@@ -54,6 +55,7 @@ class ProductPageLocators:
     remove_Tshirt_path=(By.ID,'remove-sauce-labs-bolt-t-shirt')
     remove_Jacket_path=(By.ID,'remove-sauce-labs-fleece-jacket')
     remove_onesie_path=(By.ID,'remove-sauce-labs-onesie')
+    #remove_allthings_path=(By.XPATH,'//*[@id="remove-test.allthethings()-t-shirt-(red)"]')
     remove_allthings_path=(By.ID,'remove-test.allthethings()-t-shirt-(red)')
 
 
@@ -65,26 +67,48 @@ class ProductPageLocators:
 
 
 class CartPageLocators:
+    cart_page_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
     continue_shopping_path=(By.ID,'continue-shopping')
     checkout_path=(By.ID,'checkout')
     first_item_path=(By.XPATH,'// *[ @ id = "item_4_title_link"] / div')
     second_item_path=(By.XPATH,'//*[@id="item_0_title_link"]/div')
+
 class CheckoutPageLocators:
+    checkout_page_url="https://www.saucedemo.com/checkout-step-one.html"
+    valid_first_name="Eric"
+    valid_last_name="Rocks"
+    valid_zip_code="44600"
+    checkout_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
     first_name_path=(By.ID,'first-name')
     last_name_path=(By.ID,'last-name')
     Zip_code_path=(By.ID,'postal-code')
     cancel_button_path=(By.ID,'cancel')
     continue_button_path=(By.ID,'continue')
-    finish_button_path=(By.ID,'finish')
+
+    error_message_path=(By.XPATH,'//*[@id="checkout_info_container"]/div/form/div[1]/div[4]/h3')
+
+class CheckoutOverviewPageLocators:
+    checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'
+    checkout_overview_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
+    finish_button_path = (By.ID, 'finish')
+
+class FinishPageLocators:
+    finish_page_url='https://www.saucedemo.com/checkout-complete.html'
+    finish_page_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
+    back_home_button=(By.XPATH,'//*[@id="back-to-products"]')
+    Thank_message=(By.CLASS_NAME,'complete-header')
+
 
 class OtherPageLocators:
-    menu_button_path = (By.ID, 'react-burger-menu-btn')
+    menu_button_path = (By.ID,'react-burger-menu-btn')
     all_item_path = (By.ID, 'inventory_sidebar_link')
     about_path = (By.ID, 'about_sidebar_link')
     logout_path = (By.ID, 'logout_sidebar_link')
     reset_app_state_path = (By.ID, 'reset_sidebar_link')
-    menu_close_path = (By.ID, 'react-burger-cross-btn')
-
+    menu_close_path = (By.ID,'react-burger-cross-btn')
+    #menu_container_path=(By.CLASS_NAME, 'bm-menu-wrap')
+    menu_container_path=(By.XPATH,'//*[@id="menu_button_container"]/div/div[2]')
+    footer_path = (By.CLASS_NAME, 'footer')
     twitter_path = (By.XPATH, '//*[@id="page_wrapper"]/footer/ul/li[1]/a')
     facebook_path = (By.XPATH, '//*[@id="page_wrapper"]/footer/ul/li[2]/a')
     linkedin_path = (By.XPATH, '//*[@id="page_wrapper"]/footer/ul/li[3]/a')

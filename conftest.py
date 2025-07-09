@@ -2,11 +2,11 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture()
 def driver():
-    BaseUrl = "https://www.saucedemo.com/"
+    base_url = "https://www.saucedemo.com/"
     driver = webdriver.ChromiumEdge()
     driver.maximize_window()
-    driver.get(BaseUrl)
+    driver.get(base_url)
     yield driver
     driver.quit()
