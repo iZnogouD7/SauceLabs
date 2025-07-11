@@ -1,8 +1,8 @@
 firstname,lastname,zip_code,expected
-,,,
-Eric,,,Fail
-Eric,Joshi,,Fail
+,,,FirstNameNotGiven
+Eric,,,LastNameNotGiven
+Eric,Joshi,,postalcodeNotGiven
 Eric,Joshi,44600,Success
-,Joshi,44600,Fail
-,Joshi,,Fail
-,,44600,Fail
+,Joshi,44600,FirstNameNotGiven
+,Joshi,,FirstNameNotGiven
+,,44600,FirstNameNotGiven

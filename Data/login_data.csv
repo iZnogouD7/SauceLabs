@@ -4,3 +4,4 @@ standard_user,secret_sauce,success
 ,secret_sauce,failed
 standard_user,,failed
 invalid_standard_user,not_secret_sauce,failed
+locked_user,secret_sauce,lockedout

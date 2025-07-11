@@ -19,15 +19,15 @@ def go_to_cart_page(driver):
 
 def test_cart_page(go_to_cart_page):
     cart_page = go_to_cart_page
-    assert "Your Cart" in cart_page.cart_title()
+    assert "Your Cart" in cart_page.cart_title(),f"Expected Your Cart but Got {cart_page.cart_title()}"
 
 def test_continue_shopping_button(go_to_cart_page):
     cart_page = go_to_cart_page
     cart_page.click_continue_button()
-    assert "inventory" in cart_page.get_current_url()
+    assert "inventory" in cart_page.get_current_url(),f"Expected inventory in url but Got {cart_page.get_current_url()}"
 
 def test_checkout_button(go_to_cart_page):
     cart_page = go_to_cart_page
     cart_page.click_checkout_button()
-    assert "checkout-step-one" in cart_page.get_current_url()
+    assert "checkout-step-one" in cart_page.get_current_url(),f"Expected checkout-step-one in url but Got {cart_page.get_current_url()}"
 

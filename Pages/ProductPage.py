@@ -70,6 +70,8 @@ class ProductPage(BasePage):
         sorted_copy.sort()
         return list2 == sorted_copy
 
+    def refresh_page(self):
+        self.driver.refresh()
 
 
 

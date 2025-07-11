@@ -1,5 +1,5 @@
 
-from Locators.alllocators import OtherPageLocators
+from Locators.alllocators import OtherPageLocators, ProductPageLocators
 from Pages.BasePage import BasePage
 
 
@@ -7,7 +7,8 @@ from Pages.BasePage import BasePage
 class OtherPage(BasePage):
     def get_current_url(self):
         return self.driver.current_url
-
+    def get_cart_count(self):
+        return int(self.get_text_from_element(ProductPageLocators.cart_count_path))
     def click_menu_button(self):
         self.click_element(OtherPageLocators.menu_button_path)
     def go_to_all_item(self):

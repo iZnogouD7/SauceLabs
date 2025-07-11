@@ -4,10 +4,12 @@ class LoginPageLocators:
     valid_username="standard_user"
     valid_password="secret_sauce"
 
+
     username_field = (By.ID,"user-name")
     password_field = (By.ID,"password")
     login_button=(By.ID,"login-button")
     error_field_path = (By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3')
+    show_password_path=()
 
 class ProductPageLocators:
     ProductPageUrl="https://www.saucedemo.com/inventory.html"
@@ -50,6 +52,8 @@ class ProductPageLocators:
     #add_allthings_path=(By.XPATH,'//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
     add_allthings_path=(By.ID,'add-to-cart-test.allthethings()-t-shirt-(red)')
 
+
+
     remove_back_pack_path=(By.ID,'remove-sauce-labs-backpack')
     remove_bike_light_path=(By.ID,'remove-sauce-labs-bike-light')
     remove_Tshirt_path=(By.ID,'remove-sauce-labs-bolt-t-shirt')
@@ -58,13 +62,13 @@ class ProductPageLocators:
     #remove_allthings_path=(By.XPATH,'//*[@id="remove-test.allthethings()-t-shirt-(red)"]')
     remove_allthings_path=(By.ID,'remove-test.allthethings()-t-shirt-(red)')
 
-
-    # twitter_path=(By.XPATH,'//*[@id="page_wrapper"]/footer/ul/li[1]/a')
-    # facebook_path=(By.XPATH,'//*[@id="page_wrapper"]/footer/ul/li[2]/a')
-    # linkedin_path=(By.XPATH,'//*[@id="page_wrapper"]/footer/ul/li[3]/a')
-
     back_to_product = (By.ID, 'back-to-products')
-
+    inventory_name_class_path=(By.CLASS_NAME, 'inventory_item_name')
+    inventory_desc_class_path=(By.CLASS_NAME, 'inventory_item_desc')
+    inventory_img_class_path=(By.CLASS_NAME, 'inventory_item_img')
+    inventory_price_class_path=(By.CLASS_NAME, 'inventory_item_price')
+    inventory_add_to_cart_button=(By.ID, 'add-to-cart')
+    inventory_add_to_remove_button=(By.ID, 'remove')
 
 class CartPageLocators:
     cart_page_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
@@ -90,7 +94,9 @@ class CheckoutPageLocators:
 class CheckoutOverviewPageLocators:
     checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'
     checkout_overview_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
-    finish_button_path = (By.ID, 'finish')
+    #finish_button_path=(By.XPATH,'//*[@id="finish"]')
+    #finish_button_path = (By.ID,'finish')
+    finish_button_path=(By.XPATH,'/html/body/div/div/div/div[2]/div/div[2]/div[9]/button[2]')
 
 class FinishPageLocators:
     finish_page_url='https://www.saucedemo.com/checkout-complete.html'

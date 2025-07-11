@@ -28,7 +28,17 @@ def test_checkout_validation(checkout_setup,firstname, lastname,zip_code,expecte
     if "Success" in expected:
         assert checkout_setup.get_current_url() == "https://www.saucedemo.com/checkout-step-two.html",f"{checkout_setup.get_current_url()}"
         assert checkout_setup.checkout_title() == "Checkout: Overview",f"Got checkout title: {checkout_setup.checkout_title()}"
-    elif "Fail" in expected:
+    elif "FirstNameNotGiven" in expected:
         print(f"FAILURE{firstname}{lastname}{zip_code}{checkout_setup.get_error()}")
+
+        assert "Error: First Name is required" in checkout_setup.get_error(),f"Got error : {checkout_setup.get_error()}"
+    elif "LastNameNotGiven" in expected:
+        print(f"FAILURE{firstname}{lastname}{zip_code}{checkout_setup.get_error()}")
+
+        assert "Error: Last Name is required" in checkout_setup.get_error(),f"Got error : {checkout_setup.get_error()}"
+    elif "ZipCodeNotGiven" in expected:
+        print(f"FAILURE{firstname}{lastname}{zip_code}{checkout_setup.get_error()}")
+
+        assert "Error: Postal Code is required" in checkout_setup.get_error(), f"Got error : {checkout_setup.get_error()}"
     else:
-        print("Other Errors")
+        print("Other Errors Found")
