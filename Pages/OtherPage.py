@@ -23,6 +23,10 @@ class OtherPage(BasePage):
         self.click_element(OtherPageLocators.menu_close_path)
     def is_menu_sidebar_displayed(self):
         return self.is_displayed(OtherPageLocators.menu_container_path)
+    def is_menu_button_displayed(self):
+        return self.is_displayed(OtherPageLocators.menu_button_path)
+    def is_cart_button_displayed(self):
+        return self.is_displayed(ProductPageLocators.cart_button_path)
     def is_footer_displayed(self):
         return self.is_displayed(OtherPageLocators.footer_path)
 

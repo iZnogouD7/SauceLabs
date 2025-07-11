@@ -52,8 +52,6 @@ class ProductPageLocators:
     #add_allthings_path=(By.XPATH,'//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
     add_allthings_path=(By.ID,'add-to-cart-test.allthethings()-t-shirt-(red)')
 
-
-
     remove_back_pack_path=(By.ID,'remove-sauce-labs-backpack')
     remove_bike_light_path=(By.ID,'remove-sauce-labs-bike-light')
     remove_Tshirt_path=(By.ID,'remove-sauce-labs-bolt-t-shirt')
@@ -63,6 +61,10 @@ class ProductPageLocators:
     remove_allthings_path=(By.ID,'remove-test.allthethings()-t-shirt-(red)')
 
     back_to_product = (By.ID, 'back-to-products')
+
+    @staticmethod
+    def product_card_by_name(name):
+        return By.XPATH,f"//div[text()='{name}']/ancestor::div[@class='inventory-item']"
     inventory_name_class_path=(By.CLASS_NAME, 'inventory_item_name')
     inventory_desc_class_path=(By.CLASS_NAME, 'inventory_item_desc')
     inventory_img_class_path=(By.CLASS_NAME, 'inventory_item_img')
@@ -88,15 +90,21 @@ class CheckoutPageLocators:
     Zip_code_path=(By.ID,'postal-code')
     cancel_button_path=(By.ID,'cancel')
     continue_button_path=(By.ID,'continue')
-
     error_message_path=(By.XPATH,'//*[@id="checkout_info_container"]/div/form/div[1]/div[4]/h3')
 
 class CheckoutOverviewPageLocators:
     checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'
     checkout_overview_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
-    #finish_button_path=(By.XPATH,'//*[@id="finish"]')
+
     #finish_button_path = (By.ID,'finish')
-    finish_button_path=(By.XPATH,'/html/body/div/div/div/div[2]/div/div[2]/div[9]/button[2]')
+    #finish_button_path=(By.XPATH,'/html/body/div/div/div/div[2]/div/div[2]/div[9]/button[2]')
+    payment_page_url = 'https://www.saucedemo.com/checkout-step-two.html'
+    payment_info_path = (By.XPATH, '//*[@id="checkout_summary_container"]/div/div[2]/div[2]')
+    shipping_info_path = (By.XPATH, '//*[@id="checkout_summary_container"]/div/div[2]/div[4]')
+    payment_title = (By.XPATH, '//*[@id="header_container"]/div[1]/div[2]/div')
+    finish_button_path = (By.XPATH, '//*[@id="finish"]')
+    cancel_button_path = (By.XPATH, '//*[@id="cancel"]')
+
 
 class FinishPageLocators:
     finish_page_url='https://www.saucedemo.com/checkout-complete.html'

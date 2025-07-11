@@ -1,3 +1,4 @@
+from itertools import product
 
 from selenium.webdriver.support.ui import Select
 
@@ -72,9 +73,7 @@ class ProductPage(BasePage):
 
     def refresh_page(self):
         self.driver.refresh()
-
-
-
-
+    def add_product_by_name(self,name):
+        product_card=self.find_element(ProductPageLocators.product_card_by_name(name))
 
 

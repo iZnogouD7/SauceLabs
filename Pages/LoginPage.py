@@ -25,3 +25,4 @@ class LoginPage(BasePage):
         return (self.is_displayed(LoginPageLocators.username_field) and
                 self.is_displayed(LoginPageLocators.password_field) and
                 self.is_displayed(LoginPageLocators.login_button))
+    
