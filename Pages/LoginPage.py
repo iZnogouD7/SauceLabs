@@ -13,7 +13,10 @@ class LoginPage(BasePage):
         time.sleep(3)
 
     def get_error_message(self):
-        return self.get_text_from_element(LoginPageLocators.error_field_path)
+        try:
+            return self.get_text_from_element(LoginPageLocators.error_field_path)
+        except:
+            return print(f"couldn't get the error message{self.get_text_from_element(LoginPageLocators.error_field_path)}")
 
     def get_url(self):
         return self.driver.current_url

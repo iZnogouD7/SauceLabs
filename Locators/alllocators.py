@@ -8,24 +8,18 @@ class LoginPageLocators:
     username_field = (By.ID,"user-name")
     password_field = (By.ID,"password")
     login_button=(By.ID,"login-button")
+
     error_field_path = (By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3')
     username_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[1]/svg/path')
     password_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[2]/svg')
-    error_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3/button/svg')
-    show_password_path=()
+    error_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3/button')
+    show_password_path=(By.XPATH,'//*[@id="password"]')
 
 class ProductPageLocators:
     ProductPageUrl="https://www.saucedemo.com/inventory.html"
     title_path=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
     inventory_count_path=(By.CLASS_NAME,'inventory_item')
     cart_count_path=(By.CLASS_NAME,'shopping_cart_badge')
-
-    # menu_button_path=(By.ID,'react-burger-menu-btn')
-    # all_item_path=(By.ID,'inventory_sidebar_link')
-    # about_path=(By.ID,'about_sidebar_link')
-    # logout_path=(By.ID,'logout_sidebar_link')
-    # reset_app_state_path=(By.ID,'reset_sidebar_link')
-    # menu_close_path=(By.ID,'react-burger-cross-btn')
 
     cart_button_path = (By.XPATH, '//*[@id="shopping_cart_container"]/a')
     select_filter_path=(By.CLASS_NAME, 'product_sort_container')
@@ -99,8 +93,7 @@ class CheckoutPageLocators:
 class CheckoutOverviewPageLocators:
     checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'
     checkout_overview_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
-    #finish_button_path = (By.ID,'finish')
-    #finish_button_path=(By.XPATH,'/html/body/div/div/div/div[2]/div/div[2]/div[9]/button[2]')
+
     payment_page_url = 'https://www.saucedemo.com/checkout-step-two.html'
     payment_info_path = (By.XPATH, '//*[@id="checkout_summary_container"]/div/div[2]/div[2]')
     shipping_info_path = (By.XPATH, '//*[@id="checkout_summary_container"]/div/div[2]/div[4]')

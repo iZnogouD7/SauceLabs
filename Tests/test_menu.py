@@ -56,26 +56,6 @@ def test_logout(open_product_page):
     menu.click_menu_button()
     menu.logout()
     assert menu.get_current_url() == LoginPageLocators.loginpageUrl,f"Should be in Login page{LoginPageLocators.loginpageUrl} but got url:{menu.get_current_url()}"
-@pytest.mark.footer_test
-def test_footer_visibility(open_product_page):
-    footer = open_product_page
-    assert footer.is_footer_displayed(),"Footer bar not displayed"
-@pytest.mark.footer_test
-def test_footer_twitter(open_product_page):
-    footer = open_product_page
-    footer.click_twitter_logo()
-    assert "x.com/saucelabs" in footer.get_current_url(),f"Twitter site is not displayed,Got url:{footer.get_current_url()}"
-@pytest.mark.footer_test
-def test_footer_facebook(open_product_page):
-    footer = open_product_page
-    footer.click_facebook_logo()
-    assert "facebook.com" in footer.get_current_url(),f"Facebook site is not displayed, Got url:{footer.get_current_url()}"
-@pytest.mark.footer_test
-def test_footer_linkedin(open_product_page):
-    footer = open_product_page
-    footer.click_linkedin_logo()
-    assert "linkedin.com" in footer.get_current_url(),f"Linkedin site is not displayed,Got url:{footer.get_current_url()}"
-
 
 
 

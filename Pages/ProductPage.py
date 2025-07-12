@@ -1,6 +1,7 @@
 from itertools import product
 
 from selenium.webdriver.support.ui import Select
+from socks import PRINTABLE_PROXY_TYPES
 
 from Locators.alllocators import ProductPageLocators
 from Pages.BasePage import BasePage
@@ -11,13 +12,16 @@ class ProductPage(BasePage):
         return self.find_element(ProductPageLocators.title_path)
 
     def get_item_count(self):
+        print(f"found {self.get_count(ProductPageLocators.inventory_count_path)} items in the product page")
         return self.get_count(ProductPageLocators.inventory_count_path)
 
 
     def add_single_item(self,locators):
         self.click_element(locators)
+        print(f"added {locators}")
     def remove_single_item(self,locators):
         self.click_element(locators)
+        print(f"added {locators}")
     def add_all_item(self):
         self.click_element(ProductPageLocators.add_back_pack_path)
         self.click_element(ProductPageLocators.add_Jacket_path)
@@ -25,6 +29,7 @@ class ProductPage(BasePage):
         self.click_element(ProductPageLocators.add_Tshirt_path)
         self.click_element(ProductPageLocators.add_allthings_path)
         self.click_element(ProductPageLocators.add_bike_light_path)
+        print("Added all items")
 
     def remove_all_item(self):
         self.click_element(ProductPageLocators.remove_back_pack_path)
@@ -33,9 +38,11 @@ class ProductPage(BasePage):
         self.click_element(ProductPageLocators.remove_Tshirt_path)
         self.click_element(ProductPageLocators.remove_allthings_path)
         self.click_element(ProductPageLocators.remove_bike_light_path)
+        print("All items removed")
 
     def click_on_cart_button(self):
         self.click_element(ProductPageLocators.cart_button_path)
+        print("click on cart button")
 
     def get_cart_count(self):
         return int(self.get_text_from_element(ProductPageLocators.cart_count_path))

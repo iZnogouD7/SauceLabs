@@ -18,6 +18,7 @@ class CheckoutPage(BasePage):
         self.type_in_element(CheckoutPageLocators.first_name_path,firstname)
         self.type_in_element(CheckoutPageLocators.last_name_path,lastname)
         self.type_in_element(CheckoutPageLocators.Zip_code_path,zipcode)
+        print(f"Typed in {firstname} {lastname} {zipcode} in checkout info")
         self.click_element(CheckoutPageLocators.continue_button_path)
 
     def get_error(self):
