@@ -9,6 +9,9 @@ class LoginPageLocators:
     password_field = (By.ID,"password")
     login_button=(By.ID,"login-button")
     error_field_path = (By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3')
+    username_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[1]/svg/path')
+    password_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[2]/svg')
+    error_cancel_path=(By.XPATH,'//*[@id="login_button_container"]/div/form/div[3]/h3/button/svg')
     show_password_path=()
 
 class ProductPageLocators:
@@ -65,6 +68,7 @@ class ProductPageLocators:
     @staticmethod
     def product_card_by_name(name):
         return By.XPATH,f"//div[text()='{name}']/ancestor::div[@class='inventory-item']"
+
     inventory_name_class_path=(By.CLASS_NAME, 'inventory_item_name')
     inventory_desc_class_path=(By.CLASS_NAME, 'inventory_item_desc')
     inventory_img_class_path=(By.CLASS_NAME, 'inventory_item_img')
@@ -95,7 +99,6 @@ class CheckoutPageLocators:
 class CheckoutOverviewPageLocators:
     checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'
     checkout_overview_title=(By.XPATH,'//*[@id="header_container"]/div[2]/span')
-
     #finish_button_path = (By.ID,'finish')
     #finish_button_path=(By.XPATH,'/html/body/div/div/div/div[2]/div/div[2]/div[9]/button[2]')
     payment_page_url = 'https://www.saucedemo.com/checkout-step-two.html'

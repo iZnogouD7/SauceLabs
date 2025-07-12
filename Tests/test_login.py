@@ -11,13 +11,17 @@ def test_login(driver,username, password, expected):
     assert login_page.get_url()== LoginPageLocators.loginpageUrl
     assert login_page.are_elements_displayed()== True
     login_page.login(username, password)
+    print(f"Logging with username:{username} and password :{password}")
     time.sleep(3)
     if expected=="success":
+        print("Successfully logged in")
         assert login_page.get_url() == "https://www.saucedemo.com/inventory.html",f"Wrong url: {login_page.get_url()}"
         assert login_page.get_title()== "Swag Labs",f"Wrong title: {login_page.get_title()}"
     elif expected=="failure":
+        print(f"Login failed {login_page.get_error_message()}")
         assert "Epic sadface" in login_page.get_error_message(),f"Got error message: {login_page.get_error_message()}"
     elif expected=="lockedout":
+        print(f"Login failed {login_page.get_error_message()}")
         assert "Epic sadface: Username and password do not match any user in this service" in login_page.get_error_message(),f"Expected locked user error message: {login_page.get_error_message()}"
     else:
         print("Unexpected value and Error Found")
@@ -30,8 +34,13 @@ def test_password_masking(driver):
     login_page.click_element(LoginPageLocators.show_password_path)
     assert password_field.get_attribute("type")=="text","Password should be visible after clicking show password button"
 
-# def test_locked_user_login(driver):
+# def test_cancel_button(driver):
 #     login_page = LoginPage(driver)
-#     login_page.login(LoginPageLocators.locked_username,LoginPageLocators.valid_password)
-#     error_message=login_page.get_error_message()
-#     assert "Epic sadface: Sorry, this user has been locked out." in error_message,f"Expected locked user error message: {error_message}"
+#     login_page.click_element(LoginPageLocators.login_button)
+#     assert login_page.click_element(LoginPageLocators.username_cancel_path)
+#     print("Username Cancel button pressed")
+#     assert login_page.click_element(LoginPageLocators.password_cancel_path)
+#     print("Password Cancel button pressed")
+#     assert login_page.click_element(LoginPageLocators.error_cancel_path)
+#     print("Error Cancel button pressed")
+#

@@ -5,7 +5,7 @@ from Pages.BasePage import BasePage
 class CheckoutOverviewPage(BasePage):
 
     def click_finish_button(self):
-        self.find_element(CheckoutOverviewPageLocators.finish_button_path).click()
+        self.click_element(CheckoutOverviewPageLocators.finish_button_path)
 
     def click_cancel_button(self):
         self.click_element(CheckoutOverviewPageLocators.cancel_button_path)

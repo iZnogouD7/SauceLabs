@@ -5,6 +5,7 @@ from Pages.ProductPage import ProductPage
 
 
 def test_cart_persist_after_refresh(driver):
+    print("Test Cart Persist After Refresh")
     login_page = LoginPage(driver)
     login_page.login(LoginPageLocators.valid_username, LoginPageLocators.valid_password)
     product_page = ProductPage(driver)
@@ -15,6 +16,7 @@ def test_cart_persist_after_refresh(driver):
     assert product_page.get_cart_count() == initial_count,f"Expected {initial_count} items in the cart counter but got {product_page.get_cart_count()}"
 
 def test_cart_persist_after_logout(driver):
+    print("Test Cart Persist After Logout")
     login_page = LoginPage(driver)
     login_page.login(LoginPageLocators.valid_username, LoginPageLocators.valid_password)
     product_page = ProductPage(driver)

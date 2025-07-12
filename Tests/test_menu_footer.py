@@ -55,7 +55,7 @@ def test_logout(open_product_page):
     menu = open_product_page
     menu.click_menu_button()
     menu.logout()
-    assert menu.get_current_url() == LoginPageLocators.loginpageUrl,f"Shoul be in Login page{LoginPageLocators.loginpageUrl} but got url:{menu.get_current_url()}"
+    assert menu.get_current_url() == LoginPageLocators.loginpageUrl,f"Should be in Login page{LoginPageLocators.loginpageUrl} but got url:{menu.get_current_url()}"
 @pytest.mark.footer_test
 def test_footer_visibility(open_product_page):
     footer = open_product_page

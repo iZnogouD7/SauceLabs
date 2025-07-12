@@ -18,7 +18,6 @@ def test_bug1_empty_cart_checkout(driver):
     checkout_page = CheckoutPage(driver)
     checkout_page.enter_checkout_info(CheckoutPageLocators.valid_first_name, CheckoutPageLocators.valid_last_name,
                                       CheckoutPageLocators.valid_zip_code)
-    checkout_page.click_continue_button()
     checkout_overview_page = CheckoutOverviewPage(driver)
     checkout_overview_page.click_finish_button()
     finish_page = FinishPage(driver)

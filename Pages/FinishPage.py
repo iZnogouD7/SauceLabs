@@ -11,3 +11,5 @@ class FinishPage(BasePage):
         return self.find_element(FinishPageLocators.finish_page_title).text
     def get_final_cart_count(self):
         return int(self.get_text_from_element(ProductPageLocators.cart_count_path))
+    def get_finish_url(self):
+        return self.get_current_url()
