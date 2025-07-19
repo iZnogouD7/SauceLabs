@@ -4,7 +4,7 @@ from Pages.BasePage import BasePage
 
 class CheckoutPage(BasePage):
     def checkout_title(self):
-        return self.find_element(CheckoutPageLocators.checkout_title).text
+        return self.get_text_from_element(CheckoutPageLocators.checkout_title)
     def click_cart_icon(self):
         self.click_element(ProductPageLocators.cart_button_path)
     def click_menu_icon(self):
@@ -23,3 +23,5 @@ class CheckoutPage(BasePage):
 
     def get_error(self):
         return self.get_text_from_element(CheckoutPageLocators.error_message_path)
+    def click_error_cancel_button(self):
+        self.click_element(CheckoutPageLocators.error_cancel_button)

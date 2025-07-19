@@ -10,11 +10,11 @@ class CheckoutOverviewPage(BasePage):
     def click_cancel_button(self):
         self.click_element(CheckoutOverviewPageLocators.cancel_button_path)
 
-    def get_checkout_overview_page_url(self):
-        return self.driver.current_url
+    # def get_checkout_overview_page_url(self):
+    #     return self.driver.current_url
 
-    def get_checkout_overview_page_title(self):
-        return self.driver.title
+    # def get_checkout_overview_page_title(self):
+    #     return self.driver.title
 
         # Get item names from overview page
 

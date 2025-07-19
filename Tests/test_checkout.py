@@ -1,5 +1,4 @@
 
-import time
 import pytest
 
 from Locators.alllocators import LoginPageLocators, CheckoutPageLocators
@@ -15,7 +14,6 @@ def checkout_setup(driver):
     login_page.login(LoginPageLocators.valid_username, LoginPageLocators.valid_password)
     product=ProductPage(driver)
     product.click_on_cart_button()
-    time.sleep(3)
     cart=CartPage(driver)
     cart.click_checkout_button()
     checkout_page = CheckoutPage(driver)
@@ -48,11 +46,18 @@ def test_checkout_validation(checkout_setup,firstname, lastname,zip_code,expecte
     else:
         print("Other Errors Found")
 
-def test_checkout_button(driver):
-        login_page=LoginPage(driver)
-        login_page.login(LoginPageLocators.valid_username, LoginPageLocators.valid_password)
-        product=ProductPage(driver)
-        product.click_on_cart_button()
-        cart_page=CartPage(driver)
-        cart_page.click_checkout_button()
-        checkout_page=CheckoutPage(driver)
+def test_continue_button(checkout_setup):
+        checkout_page=checkout_setup
+        checkout_page.enter_checkout_info(CheckoutPageLocators.valid_first_name,CheckoutPageLocators.valid_last_name,CheckoutPageLocators.valid_zip_code)
+        assert "checkout-step-two.html" in checkout_page.get_current_url(),f"Got:{checkout_page.get_current_url()}"
+def test_cancel_button(checkout_setup):
+    checkout_page=checkout_setup
+    checkout_page.click_cancel_button()
+    assert "cart.html" in checkout_page.get_current_url(),f"Got:{checkout_page.get_current_url()}"
+
+def test_error_cancel_button(checkout_setup):
+    checkout_page=checkout_setup
+    checkout_page.click_continue_button()
+    assert checkout_page.is_displayed(CheckoutPageLocators.error_message_path),f"Got:{checkout_page.is_displayed(CheckoutPageLocators.error_message_path)}"
+    checkout_page.click_error_cancel_button()
+    assert not checkout_page.is_displayed(CheckoutPageLocators.error_message_path),f"Got:{checkout_page.is_displayed(CheckoutPageLocators.error_message_path)}"

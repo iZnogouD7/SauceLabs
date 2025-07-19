@@ -59,6 +59,7 @@ class ProductPageLocators:
 
     back_to_product = (By.ID, 'back-to-products')
 
+
     @staticmethod
     def product_card_by_name(name):
         return By.XPATH,f"//div[text()='{name}']/ancestor::div[@class='inventory-item']"
@@ -89,6 +90,7 @@ class CheckoutPageLocators:
     cancel_button_path=(By.ID,'cancel')
     continue_button_path=(By.ID,'continue')
     error_message_path=(By.XPATH,'//*[@id="checkout_info_container"]/div/form/div[1]/div[4]/h3')
+    error_cancel_button=(By.XPATH,'//*[@id="checkout_info_container"]/div/form/div[1]/div[4]/h3/button')
 
 class CheckoutOverviewPageLocators:
     checkout_overview_url='https://www.saucedemo.com/checkout-step-two.html'

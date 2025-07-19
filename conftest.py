@@ -10,3 +10,4 @@ def driver():
     driver.get(base_url)
     yield driver
     driver.quit()
+

@@ -1,3 +1,4 @@
+from selenium.common import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 class BasePage:
@@ -7,21 +8,20 @@ class BasePage:
 
     def find_element(self,locator):
         try:
-
             return self.wait.until(EC.presence_of_element_located(locator))
-        except:
-            raise Exception(f"Timed Out waiting for Element {locator} not found")
+        except TimeoutException:
+            raise Exception(f"Timed Out. waiting for Element {locator} not found")
 
     def find_elements(self,locator):
         try:
             return self.wait.until(EC.presence_of_all_elements_located(locator))
-        except:
+        except TimeoutException:
             raise Exception(f"Timed Out waiting for Elements {locator} not found")
 
     def click_element(self,locator):
         try:
             self.wait.until(EC.element_to_be_clickable(locator)).click()
-        except:
+        except TimeoutException:
             raise Exception(f"Failed to click Element {locator} not found")
 
     def type_in_element(self,locator,text):
@@ -29,13 +29,13 @@ class BasePage:
             element=self.wait.until(EC.presence_of_element_located(locator))
             element.clear()
             element.send_keys(text)
-        except:
+        except TimeoutException:
             raise Exception(f"Failed to type into element {locator} with text {text} not found")
 
     def get_text_from_element(self,locator):
         try:
             return self.wait.until(EC.visibility_of_element_located(locator)).text
-        except:
+        except TimeoutException:
             print(f"Couldn't get text from element {locator}")
             return 0
 
@@ -44,8 +44,8 @@ class BasePage:
 
     def is_displayed(self,locator):
         try:
-            return self.find_element(locator).is_displayed()
-        except:
+            return self.wait.until(EC.visibility_of_element_located(locator)).is_displayed()
+        except TimeoutException:
             print(f"'{locator} is not displayed'")
             return False
 
@@ -59,3 +59,15 @@ class BasePage:
             if window != main_window:
                 return window
         raise AssertionError("No new windows found after click")
+
+    def get_page_title(self):
+        return self.driver.title
+    def refresh_page(self):
+        self.driver.refresh()
+    def wait_for_page_load(self,text):
+        try:
+            self.wait.until(EC.url_contains(text))
+            return True
+        except TimeoutException:
+            print(f"Timed Out. waiting for {text} not found")
+            return False

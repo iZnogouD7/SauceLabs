@@ -12,7 +12,7 @@ def go_to_product_details(driver):
     product_page = ProductPage(driver)
     product_page.click_element(ProductPageLocators.title_back_pack_path)
     return product_page
-@pytest.mark.Product_details_test
+@pytest.mark.order(12)
 def test_product_details(go_to_product_details):
     product_page = go_to_product_details
     assert "inventory-item" in product_page.get_current_url(),f"Not on Product details page: Got Url:{product_page.get_current_url()}"
@@ -22,7 +22,7 @@ def test_product_details(go_to_product_details):
     assert product_page.is_displayed(ProductPageLocators.inventory_price_class_path), "Product price is not displayed"
     assert product_page.is_displayed(ProductPageLocators.back_to_product),"Back button is not displayed"
     assert product_page.is_displayed(ProductPageLocators.add_back_pack_path),"Add back button is not displayed"
-@pytest.mark.Product_details_test
+@pytest.mark.order(12)
 def test_add_remove_in_detail_page(go_to_product_details):
     product_page = go_to_product_details
     initial_count=product_page.get_cart_count()
@@ -30,7 +30,7 @@ def test_add_remove_in_detail_page(go_to_product_details):
     assert product_page.get_cart_count()==initial_count+1,f"Cart count must be {initial_count+1} but got cart count {product_page.get_cart_count()}"
     product_page.click_element(ProductPageLocators.inventory_add_to_remove_button)
     assert product_page.get_cart_count()==initial_count,f"Cart count must be {initial_count} but got cart count {product_page.get_cart_count()}"
-@pytest.mark.Product_details_test
+@pytest.mark.order(13)
 def test_back_to_inventory_page(go_to_product_details):
     product_page = go_to_product_details
     product_page.click_element(ProductPageLocators.back_to_product)

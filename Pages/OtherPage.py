@@ -5,8 +5,8 @@ from Pages.BasePage import BasePage
 
 
 class OtherPage(BasePage):
-    def get_current_url(self):
-        return self.driver.current_url
+    # def get_current_url(self):
+    #     return self.driver.current_url
     def get_cart_count(self):
         return int(self.get_text_from_element(ProductPageLocators.cart_count_path))
     def click_menu_button(self):
@@ -36,4 +36,10 @@ class OtherPage(BasePage):
         self.click_element(OtherPageLocators.facebook_path)
     def click_linkedin_logo(self):
         self.click_element(OtherPageLocators.linkedin_path)
+
+    def window_handle(self,driver,main_window):
+        for window_handle in driver.window_handles:
+            if window_handle != main_window:
+                driver.switch_to.window(window_handle)
+                break
 

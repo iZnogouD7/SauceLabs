@@ -46,7 +46,6 @@ def test_click_reset_item(open_product_page):
     menu.reset_app_state()
     menu.click_menu_cancel()
     assert menu.get_cart_count()==0,f"cart was not reset. got{menu.get_cart_count()}"
-
     #assert menu.get_cart_count()==initial_count,f"cart was reset. got{menu.get_cart_count()}"
 
 

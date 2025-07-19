@@ -1,10 +1,8 @@
-from operator import truediv
 
 import pytest
 
 from Locators.alllocators import LoginPageLocators, ProductPageLocators
 from Pages.CartPage import CartPage
-from Pages.CheckoutOverviewPage import CheckoutOverviewPage
 from Pages.LoginPage import LoginPage
 from Pages.OtherPage import OtherPage
 from Pages.ProductPage import ProductPage
@@ -19,6 +17,9 @@ def test_global_elements(driver,page_url):
     assert other_page.is_menu_sidebar_displayed(),"Menu Button Not Displayed"
     assert other_page.is_cart_button_displayed(),"Cart Button Not Displayed"
     assert other_page.is_footer_displayed(),"Footer Not Displayed"
+    other_page.click_menu_button()
+    other_page.go_to_all_item()
+    assert "inventory.html" in other_page.get_current_url(),f"Got url:{other_page.get_current_url()}"
 
 def test_known_verification(driver):
     login_page = LoginPage(driver)
